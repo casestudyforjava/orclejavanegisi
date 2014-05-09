@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body><f:view>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="FilmId:" for="filmId" />
+                    <h:inputText id="filmId" value="#{filmModel.film.filmId}" title="FilmId" required="true" requiredMessage="The FilmId field is required."/>
+                    <h:outputLabel value="Title:" for="title" />
+                    <h:inputText id="title" value="#{filmModel.film.title}" title="Title" required="true" requiredMessage="The Title field is required."/>
+                    <h:outputLabel value="Description:" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{filmModel.film.description}" title="Description" />
+                    <h:outputLabel value="ReleaseYear:" for="releaseYear" />
+                    <h:inputText id="releaseYear" value="#{filmModel.film.releaseYear}" title="ReleaseYear" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="RentalDuration:" for="rentalDuration" />
+                    <h:inputText id="rentalDuration" value="#{filmModel.film.rentalDuration}" title="RentalDuration" required="true" requiredMessage="The RentalDuration field is required."/>
+                    <h:outputLabel value="RentalRate:" for="rentalRate" />
+                    <h:inputText id="rentalRate" value="#{filmModel.film.rentalRate}" title="RentalRate" required="true" requiredMessage="The RentalRate field is required."/>
+                    <h:outputLabel value="Length:" for="length" />
+                    <h:inputText id="length" value="#{filmModel.film.length}" title="Length" />
+                    <h:outputLabel value="ReplacementCost:" for="replacementCost" />
+                    <h:inputText id="replacementCost" value="#{filmModel.film.replacementCost}" title="ReplacementCost" required="true" requiredMessage="The ReplacementCost field is required."/>
+                    <h:outputLabel value="Rating:" for="rating" />
+                    <h:inputText id="rating" value="#{filmModel.film.rating}" title="Rating" />
+                    <h:outputLabel value="SpecialFeatures:" for="specialFeatures" />
+                    <h:inputText id="specialFeatures" value="#{filmModel.film.specialFeatures}" title="SpecialFeatures" />
+                    <h:outputLabel value="LastUpdate:" for="lastUpdate" />
+                    <h:inputText id="lastUpdate" value="#{filmModel.film.lastUpdate}" title="LastUpdate" required="true" requiredMessage="The LastUpdate field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="OriginalLanguageId:" for="originalLanguageId" />
+                    <h:selectOneMenu id="originalLanguageId" value="#{filmModel.film.originalLanguageId.languageId}" title="OriginalLanguageId" >
+                       <f:selectItems value="#{filmModel.langageItems}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="LanguageId:" for="languageId" />
+                    <h:selectOneMenu id="languageId" value="#{filmModel.film.languageId.languageId}" title="LanguageId" required="true" requiredMessage="The LanguageId field is required.">
+                         <f:selectItems value="#{filmModel.langageItems}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="create" action="#{filmModel.createFilm}" />
+            </h:form><h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{fileModel.filmList}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="FilmId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.filmId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Title"/>
+                        </f:facet>
+                        <h:outputText value="#{item.title}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ReleaseYear"/>
+                        </f:facet>
+                        <h:outputText value="#{item.releaseYear}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="RentalDuration"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rentalDuration}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="RentalRate"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rentalRate}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Length"/>
+                        </f:facet>
+                        <h:outputText value="#{item.length}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ReplacementCost"/>
+                        </f:facet>
+                        <h:outputText value="#{item.replacementCost}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Rating"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rating}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="SpecialFeatures"/>
+                        </f:facet>
+                        <h:outputText value="#{item.specialFeatures}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="LastUpdate"/>
+                        </f:facet>
+                        <h:outputText value="#{item.lastUpdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="OriginalLanguageId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.originalLanguageId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="LanguageId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.languageId}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
